@@ -9,7 +9,7 @@ from mesa.datacollection import DataCollector
 
 # --- 核心逻辑 (保持不变) ---
 # --- 修复乱码代码开始 ---
-plt.rcParams['font.sans-serif'] = ['SimHei'] # 指定默认字体为黑体
+plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'SimHei', 'sans-serif'] # 指定默认字体为黑体
 plt.rcParams['axes.unicode_minus'] = False   # 解决保存图像是负号'-'显示为方块的问题
 # --- 修复乱码代码结束 ---
 
