@@ -9,7 +9,7 @@ from mesa.datacollection import DataCollector
 
 # --- 核心逻辑 (保持不变) ---
 # --- 修复乱码代码开始 ---
-plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'SimHei', 'sans-serif'] # 指定默认字体为黑体
+plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei'] # 指定默认字体为黑体
 plt.rcParams['axes.unicode_minus'] = False   # 解决保存图像是负号'-'显示为方块的问题
 # --- 修复乱码代码结束 ---
 
@@ -200,4 +200,5 @@ if st.button("开始战略推演"):
             st.write("**商战评论**：巨头凭借深厚的护城河守住了阵地。初创企业的‘骚扰’未能触及核心盈利业务。")
         else:
             st.write("**商战评论**：典型的‘创新者窘境’。巨头被高昂的运营成本和初创企业的侧翼蚕食拖垮。")
+
         st.info("💡 **MBA 映射**：此模型体现了‘破坏性创新’如何利用大企业的固定成本优势进行反向打击。")
