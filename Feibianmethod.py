@@ -9,7 +9,7 @@ from mesa.datacollection import DataCollector
 
 # --- 核心逻辑 (保持不变) ---
 # --- 修复乱码代码开始 ---
-plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei'] # 指定默认字体为黑体
+plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei', 'SimHei', 'sans-serif'] # 指定默认字体为黑体
 plt.rcParams['axes.unicode_minus'] = False   # 解决保存图像是负号'-'显示为方块的问题
 # --- 修复乱码代码结束 ---
 
@@ -149,7 +149,31 @@ else:
     }
 
 st.title(mapping["title"])
-st.sidebar.markdown(f"### 当前模式：{view_mode}")
+# --- 插入背景介绍模块 ---
+# 使用 st.container 让内容组织更整齐
+intro_container = st.container()
+
+with intro_container:
+    # 使用 st.info 或自定义 markdown 营造“实验室汇报”感
+    if view_mode == "历史战略视角":
+        st.markdown(f"""
+        ### 📜 战前简报：费边防御
+        **背景：** 公元前218年，汉尼拔率领迦太基大军翻越阿尔卑斯山，罗马陷入空前危机。
+        **核心逻辑：** * **拖延与规避**：避免正面决战，利用罗马本土优势消耗敌人。
+        * **侧翼骚扰**：利用小规模部队持续削减汉尼拔的粮草与士气。
+        * **空间换时间**：在此模拟中，蓝色的费边部队将通过保持距离来生存。
+        """)
+    else:
+        st.markdown(f"""
+        ### 💼 商业洞察：颠覆性创新
+        **背景：** 当成熟巨头（Incumbent）忙于服务高利润客户时，敏捷的颠覆者（Disruptor）正从底层切入。
+        **核心逻辑：**
+        * **低成本优势**：初创企业没有沉重的组织负担。
+        * **反向蚕食**：利用非对称性竞争，让巨头在维持原有市场时不断失血（烧钱率）。
+        * **防御陷阱**：巨头越是试图维持现状，其单位资本的效率往往下降越快。
+        """)
+        
+    st.markdown("---") # 分割线，区分背景与操作区
 
 with st.sidebar:
     st.header("战场/市场参数")
@@ -200,5 +224,4 @@ if st.button("开始战略推演"):
             st.write("**商战评论**：巨头凭借深厚的护城河守住了阵地。初创企业的‘骚扰’未能触及核心盈利业务。")
         else:
             st.write("**商战评论**：典型的‘创新者窘境’。巨头被高昂的运营成本和初创企业的侧翼蚕食拖垮。")
-
         st.info("💡 **MBA 映射**：此模型体现了‘破坏性创新’如何利用大企业的固定成本优势进行反向打击。")
